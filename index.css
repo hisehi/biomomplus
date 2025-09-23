@@ -57,7 +57,7 @@ body{
 .sns .txt p{
     color: white;
     text-align: right;
-    font-size: 24px;
+    font-size: 40px;
     margin-right: 3%;
 }
 .sns a{
@@ -66,8 +66,8 @@ body{
     justify-content: center;
 }
 .sns a img{
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
 }
 
 
@@ -99,7 +99,7 @@ body{
 .contents .content a {
     display: block; /* a 태그를 블록 레벨 요소로 만들어 너비와 높이를 지정할 수 있게 함 */
     width: 100%;    /* 부모 요소인 .content의 전체 너비를 차지 */
-    height: 100%;   /* 부모 요소인 .content의 전체 높이를 차지 */
+    aspect-ratio: 1/1 ;  /* 부모 요소인 .content의 전체 높이를 차지 */
     text-decoration: none; /* 밑줄 제거 (선택 사항) */
     color: inherit; /* 폰트 색상 상속 (선택 사항) */
     /* background-color: rgba(255, 0, 0, 0.3); */ /* 🚨 임시: 클릭 영역 시각적으로 확인하기 위한 배경색. 문제 해결 후 삭제! */
@@ -164,8 +164,8 @@ body{
 /* 이 .modal-content-wrapper가 모달의 배경, 크기, 둥근 모서리 등을 담당합니다. */
 .modal-content-wrapper {
     background: #fff; /* 모달 내용의 흰색 배경 */
-    width: 80%; /* 모달 자체의 너비 */
-    max-width: 500px; /* 너무 커지지 않도록 최대 너비 제한 (필요하다면 조절) */
+    width: 90%; /* 모달 자체의 너비 */
+    max-width: 1800px; /* 너무 커지지 않도록 최대 너비 제한 (필요하다면 조절) */
     max-height: 90vh; /* 최대 높이 (뷰포트 높이의 90%) */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
@@ -196,7 +196,7 @@ body{
 /* --- 모달 헤더 스타일 --- */
 
 .modal__header {
-    color: rgb(68, 68, 68);
+    color: #172F62;
     line-height: 50px;
     /* text-align: center; */ /* X 버튼으로 인해 센터 정렬이 어려우므로 주석 처리 */
     position: relative;
