@@ -6,6 +6,7 @@
     <title>BiomomPlus</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="top">
@@ -29,26 +30,50 @@
 
     <div class="contents">
         <div class="content_1">
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal1"><div class="w1"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal2"><div class="w2"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal3"><div class="w3"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
         </div>
     </div>
     <div class="contents">
         <div class="content_1">
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
         </div>
     </div>
     <div class="contents">
         <div class="content_1">
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
-            <div class="content"></div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
+            <div class="content">
+                <a href="#" class="js-open-modal" data-modal="modal4"><div class="w4"></div></a>
+            </div>
         </div>
     </div>
     <div class="contents">
@@ -67,6 +92,54 @@
             <div class="content"></div> -->
         </div>
     </div>
+
+
+
+    <!-- 모달 -->
+    <div class="modal-overlay"></div> <!-- 모달 오버레이 추가 -->
+    <div class="modal" id="modal1">
+        <div class="modal-content-wrapper">
+            <div class="modal__header">
+                <a href="#" class="js-close-modal">X</a>
+            </div>
+            <img src="img/cohaens_2.png" alt="">
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        $(document).ready(function() {
+    $(".js-open-modal").click(function(event) {
+        event.preventDefault();
+        const modalId = $(this).data("modal");
+        $("#" + modalId).addClass("visible");
+        $(".modal-overlay").addClass("visible"); // 오버레이도 보이게
+    });
+
+    $(".js-close-modal").click(function(event) {
+        event.preventDefault();
+        $(this).closest(".modal").removeClass("visible");
+        $(".modal-overlay").removeClass("visible"); // 오버레이도 숨기기
+    });
+
+    $(document).click(function(event) {
+        // 모달이나 "열기" 버튼 이외의 클릭 시 모달 닫기
+        // 오버레이 클릭 시 닫기 기능 추가 (event.target이 모달이 아니고 오버레이면 닫기)
+        if (!$(event.target).closest(".modal, .js-open-modal").length) {
+            $(".modal").removeClass("visible");
+            $(".modal-overlay").removeClass("visible");
+        }
+    });
+    // 오버레이 클릭 시 모달 닫기 추가
+    $(".modal-overlay").click(function() {
+        $(".modal").removeClass("visible");
+        $(this).removeClass("visible");
+    });
+});
+    </script>
     
 </body>
 </html>

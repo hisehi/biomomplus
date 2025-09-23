@@ -83,7 +83,6 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     gap: 2%;
-    outline: 1px solid red;
     margin-top: 1.5%;
 }
 .contents .content{
@@ -92,16 +91,153 @@ body{
     background-color: white;
     border-radius: 20px;
 }
+.contents .content a:hover{
+    opacity: 0.5;
+}
 
+/* .contents .content 안에 있는 a 태그의 클릭 영역을 넓혀줍니다. */
+.contents .content a {
+    display: block; /* a 태그를 블록 레벨 요소로 만들어 너비와 높이를 지정할 수 있게 함 */
+    width: 100%;    /* 부모 요소인 .content의 전체 너비를 차지 */
+    height: 100%;   /* 부모 요소인 .content의 전체 높이를 차지 */
+    text-decoration: none; /* 밑줄 제거 (선택 사항) */
+    color: inherit; /* 폰트 색상 상속 (선택 사항) */
+    /* background-color: rgba(255, 0, 0, 0.3); */ /* 🚨 임시: 클릭 영역 시각적으로 확인하기 위한 배경색. 문제 해결 후 삭제! */
+}
+
+/* w1, w2, w3, w4 클래스는 내용이 없으므로 필요 없을 가능성이 큽니다. */
+/* 만약 이 안에 아이콘이나 이미지가 들어갈 예정이라면, 아래처럼 스타일을 주어 조정 가능합니다. */
+.contents .content .w1,
+.contents .content .w2,
+.contents .content .w3,
+.contents .content .w4 {
+    width: 100%;
+    height: 100%;
+}
+
+/* 모달 */
+.modal-overlay {
+    display: none; /* 기본 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 */
+    z-index: 99; /* 모달보다는 낮고 다른 콘텐츠보다는 높게 */
+    transition: opacity 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.modal-overlay.visible {
+    display: block; /* jQuery로 visible 클래스 추가 시 보이게 */
+    opacity: 1;
+}
+
+/* --- 모달 본체 스타일 --- */
+.modal {
+    display: flex; /* flexbox를 사용해 내부 요소를 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    
+    position: fixed;
+    top: 0; /* 화면 전체를 덮도록 top, left, right, bottom 0 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    background-color: transparent; /* 오버레이가 배경 역할을 할 것이므로 투명하게 */
+    
+    z-index: 100; /* 오버레이보다 높게 */
+    
+    visibility: hidden; /* 초기에는 완전히 숨김 (opacity와 함께 사용) */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+/* --- 모달이 보일 때의 스타일 --- */
+.modal.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- 모달 콘텐츠 래퍼 스타일 (실제 모달 상자) --- */
+/* 이 .modal-content-wrapper가 모달의 배경, 크기, 둥근 모서리 등을 담당합니다. */
+.modal-content-wrapper {
+    background: #fff; /* 모달 내용의 흰색 배경 */
+    width: 80%; /* 모달 자체의 너비 */
+    max-width: 500px; /* 너무 커지지 않도록 최대 너비 제한 (필요하다면 조절) */
+    max-height: 90vh; /* 최대 높이 (뷰포트 높이의 90%) */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    box-sizing: border-box; /* padding이 너비에 포함되도록 */
+    overflow-y: auto; /* 내용이 넘치면 스크롤 */
+    scrollbar-width: none; /* Firefox 스크롤바 숨기기 */
+    -ms-overflow-style: none; /* IE/Edge 스크롤바 숨기기 */
+    text-align: center;
+    padding: 20px; /* 모달 내부 콘텐츠와 경계 사이의 여백 */
+    position: relative; /* X 버튼의 absolute 위치 기준점 */
+}
+
+/* Chrome, Safari 등 웹킷 기반 브라우저 스크롤바 숨기기 */
+.modal-content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- 모달 이미지 스타일 --- */
+.modal img {
+    max-width: 100%; /* 모달 콘텐츠 래퍼의 너비를 넘어가지 않도록 */
+    height: auto; /* 이미지 비율 유지 */
+    display: block; /* 이미지 아래 공백 제거 */
+    margin: 20px auto 0; /* 상단 여백 20px, 가로 중앙 정렬 */
+    /* padding: 20px; 는 이제 .modal-content-wrapper에 있으니 제거하거나 필요에 따라 조절 */
+    box-sizing: border-box;
+}
+
+/* --- 모달 헤더 스타일 --- */
+
+.modal__header {
+    color: rgb(68, 68, 68);
+    line-height: 50px;
+    /* text-align: center; */ /* X 버튼으로 인해 센터 정렬이 어려우므로 주석 처리 */
+    position: relative;
+    height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee; /* 헤더 구분선 추가 */
+    margin-bottom: 20px; /* 헤더와 이미지 사이 여백 */
+    display: flex; /* X 버튼을 오른쪽으로 배치하기 위해 flex 사용 */
+    justify-content: flex-end; /* X 버튼을 오른쪽 끝으로 */
+    align-items: center; /* X 버튼을 세로 중앙으로 */
+}
+
+/* --- 모달 닫기 버튼 (X) 스타일 --- */
+.modal__header a {
+    /* position: absolute; top: 0; right: 0; */ /* flex로 부모에서 정렬했으므로 제거 */
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+    font-weight: bold;
+    display: flex; /* X 버튼을 중앙 정렬하기 위해 flex 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    width: 50px; /* X 버튼 영역 크기 고정 */
+    height: 100%;
+    font-size: 1.2em; /* 폰트 사이즈 좀 더 키움 */
+}
 
 @media (max-width:991px){
 
+    .logo{
+        margin-top: 7%;
+    }
+
+    .sns .txt{
+        width: 90%;
+    }
     .sns .txt p{
         font-size: 9px;
     }
     .sns a img{
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 
     .line{
@@ -114,11 +250,13 @@ body{
         margin-top: 0;
         width: 90%;
         gap: 4%;
+        flex-wrap: wrap;
     }
 
     .contents .content{
         margin-top: 4%;
         width: 48%;
         border-radius: 10px;
+        aspect-ratio: 1/1 ;
     }
 }
