@@ -10,6 +10,7 @@
 
 body{
     background-color: #172F62;
+    padding-bottom: 15%;
 }
 
 
@@ -37,4 +38,87 @@ body{
     background-color: rgba(255, 255, 255, 0.5);
     width: 80%;
     height: 1px;
+}
+
+.sns{
+    display: flex;
+    justify-content: center;
+}
+.sns .txt{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 80%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.sns .txt p{
+    color: white;
+    text-align: right;
+    font-size: 24px;
+    margin-right: 3%;
+}
+.sns a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sns a img{
+    width: 80px;
+    height: 80px;
+}
+
+
+/* 여기부터 제품목록 */
+
+.contents{
+    display: flex;
+    justify-content: center;
+}
+.content_1{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2%;
+    outline: 1px solid red;
+    margin-top: 1.5%;
+}
+.contents .content{
+    width: 23.5%;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 20px;
+}
+
+
+@media (max-width:991px){
+
+    .sns .txt p{
+        font-size: 9px;
+    }
+    .sns a img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .line{
+        width: 90%;
+    }
+
+    /* 여기부터 제품목록 */
+
+    .content_1{
+        margin-top: 0;
+        width: 90%;
+        gap: 4%;
+    }
+
+    .contents .content{
+        margin-top: 4%;
+        width: 48%;
+        border-radius: 10px;
+    }
 }
