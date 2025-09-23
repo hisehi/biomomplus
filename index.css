@@ -165,7 +165,7 @@ body{
 .modal-content-wrapper {
     background: #fff; /* 모달 내용의 흰색 배경 */
     width: 90%; /* 모달 자체의 너비 */
-    max-width: 1800px; /* 너무 커지지 않도록 최대 너비 제한 (필요하다면 조절) */
+    max-width: 1500px; /* 너무 커지지 않도록 최대 너비 제한 (필요하다면 조절) */
     max-height: 90vh; /* 최대 높이 (뷰포트 높이의 90%) */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
