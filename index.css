@@ -91,6 +91,10 @@ body{
     background-color: white;
     border-radius: 20px;
 }
+.contents .content img{
+    width: 100%;
+    border-radius: 20px;
+}
 .contents .content a:hover{
     opacity: 0.5;
 }
@@ -110,7 +114,27 @@ body{
 .contents .content .w1,
 .contents .content .w2,
 .contents .content .w3,
-.contents .content .w4 {
+.contents .content .w4,
+.contents .content .w5,
+.contents .content .w6,
+.contents .content .w7,
+.contents .content .w8,
+.contents .content .w9,
+.contents .content .w10,
+.contents .content .w11,
+.contents .content .w12,
+.contents .content .w13,
+.contents .content .w14,
+.contents .content .w15,
+.contents .content .w16,
+.contents .content .w17,
+.contents .content .w18,
+.contents .content .w19,
+.contents .content .w20,
+.contents .content .w21,
+.contents .content .w22,
+.contents .content .w23,
+.contents .content .w24 {
     width: 100%;
     height: 100%;
 }
@@ -188,9 +212,11 @@ body{
     max-width: 100%; /* 모달 콘텐츠 래퍼의 너비를 넘어가지 않도록 */
     height: auto; /* 이미지 비율 유지 */
     display: block; /* 이미지 아래 공백 제거 */
-    margin: 20px auto 0; /* 상단 여백 20px, 가로 중앙 정렬 */
+    margin: 10% auto 10% ; /* 상단 여백 10%, 가로 중앙 정렬 */
     /* padding: 20px; 는 이제 .modal-content-wrapper에 있으니 제거하거나 필요에 따라 조절 */
     box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    border-radius: 20px;
 }
 
 /* --- 모달 헤더 스타일 --- */
@@ -211,7 +237,9 @@ body{
 
 .modal__header h1{
     font-size: 30px;
+    font-weight: 800;
 }
+
 
 /* --- 모달 닫기 버튼 (X) 스타일 --- */
 .modal__header a {
@@ -227,10 +255,39 @@ body{
     font-size: 1.2em; /* 폰트 사이즈 좀 더 키움 */
 }
 
+
+/* 모달 내부 스타일 */
+.modal .about{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.about .right .txt{
+    text-align: left;
+}
+.about .right .txt h3{
+    font-size: 30px;
+    color: #2c2c2c;
+    margin-bottom: 5%;
+    line-height: 1.8;
+}
+.about .right .txt p{
+    font-weight: 400;
+    line-height: 2;
+}
+
+
+
 @media (max-width:991px){
 
     .logo{
         margin-top: 7%;
+    }
+    .logo img{
+        width: 30%;
     }
 
     .sns .txt{
@@ -264,6 +321,11 @@ body{
         aspect-ratio: 1/1 ;
     }
 
+    .contents .content img{
+    width: 100%;
+    border-radius: 10px;
+}
+
     /* 모달 */
 
     .modal-content-wrapper{
@@ -276,10 +338,36 @@ body{
         height: 30px;
     }
     .modal__header h1{
-        font-size: 16px;
+        font-size: 20px;
+        position: absolute;
+        left: 2%;
     }
 
     .modal__header a {
         width: 30px;
+    }
+
+    .modal img{
+        margin: 2% auto 10%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        border-radius: 10px;
+    }
+
+    .modal .about{
+        gap: 5%;
+        margin-bottom: 5%;
+    }
+
+    .about .right .txt h3{
+    font-size: 16px;
+    color: #2c2c2c;
+    margin-bottom: 5%;
+    line-height: 1.8;
+    }
+
+    .about .right .txt p{
+        font-weight: 400;
+        line-height: 2;
+        font-size: 10px;
     }
 }
