@@ -212,7 +212,7 @@ body{
     max-width: 100%; /* 모달 콘텐츠 래퍼의 너비를 넘어가지 않도록 */
     height: auto; /* 이미지 비율 유지 */
     display: block; /* 이미지 아래 공백 제거 */
-    margin: 10% auto 10% ; /* 상단 여백 10%, 가로 중앙 정렬 */
+    margin: 10% 0 10% ; /* 상단 여백 10%, 가로 중앙 정렬 */
     /* padding: 20px; 는 이제 .modal-content-wrapper에 있으니 제거하거나 필요에 따라 조절 */
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0, 0, 0, .2);
@@ -274,15 +274,20 @@ body{
     margin-bottom: 5%;
     line-height: 1.8;
 }
+
 .about .right .txt p{
     font-weight: 400;
     line-height: 2;
 }
 
+.about .right .txt span{
+    font-size: 20px;
+    text-decoration: underline 2px solid #bebebe;
+}
 
 
 @media (max-width:991px){
-
+    
     .logo{
         margin-top: 7%;
     }
@@ -363,6 +368,10 @@ body{
     color: #2c2c2c;
     margin-bottom: 5%;
     line-height: 1.8;
+    }
+
+    .about .right .txt span{
+    font-size: 10px;
     }
 
     .about .right .txt p{
