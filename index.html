@@ -673,7 +673,7 @@
         if (!$(event.target).closest(".modal, .js-open-modal").length) {
             $(".modal").removeClass("visible");
             $(".modal-overlay").removeClass("visible");
-            
+
             // 모달 닫힐 때 스크롤 복원
             $("body").removeClass("body-no-scroll");
         }
@@ -682,6 +682,7 @@
     $(".modal-overlay").click(function() {
         $(".modal").removeClass("visible");
         $(this).removeClass("visible");
+        $("body").removeClass("body-no-scroll");
     });
 });
     </script>

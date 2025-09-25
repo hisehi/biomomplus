@@ -141,6 +141,12 @@ body{
 }
 
 
+.body-no-scroll {
+    overflow: hidden !important;
+    height: 100vh; /* 화면 높이 고정으로 스크롤 방지를 안정적으로 만듭니다 */
+    position: fixed;
+    width: 100%;
+}
 
 /* 모달 */
 .modal-overlay {
