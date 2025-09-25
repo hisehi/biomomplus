@@ -653,12 +653,18 @@
         const modalId = $(this).data("modal");
         $("#" + modalId).addClass("visible");
         $(".modal-overlay").addClass("visible"); // 오버레이도 보이게
+
+         // 모달 열 때 body 스크롤 막기
+        $("body").addClass("body-no-scroll");
     });
 
     $(".js-close-modal").click(function(event) {
         event.preventDefault();
         $(this).closest(".modal").removeClass("visible");
         $(".modal-overlay").removeClass("visible"); // 오버레이도 숨기기
+
+        // 모달 닫을 때 body 스크롤 허용
+        $("body").removeClass("body-no-scroll");
     });
 
     $(document).click(function(event) {
@@ -667,6 +673,9 @@
         if (!$(event.target).closest(".modal, .js-open-modal").length) {
             $(".modal").removeClass("visible");
             $(".modal-overlay").removeClass("visible");
+            
+            // 모달 닫힐 때 스크롤 복원
+            $("body").removeClass("body-no-scroll");
         }
     });
     // 오버레이 클릭 시 모달 닫기 추가
