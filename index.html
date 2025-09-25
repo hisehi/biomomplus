@@ -647,47 +647,7 @@
 
     <script>
 
-        $(document).ready(function() {
-    $(".js-open-modal").click(function(event) {
-        event.preventDefault();
-        const modalId = $(this).data("modal");
-        $("#" + modalId).addClass("visible");
-        $(".modal-overlay").addClass("visible"); // 오버레이도 보이게
-
-         // 모달 열 때 body 스크롤 막기
-        $("body").addClass("body-no-scroll");
-    });
-
-    $(".js-close-modal").click(function(event) {
-        event.preventDefault();
-        $(this).closest(".modal").removeClass("visible");
-        $(".modal-overlay").removeClass("visible"); // 오버레이도 숨기기
-
-        // 모달 닫을 때 body 스크롤 허용
-        $("body").removeClass("body-no-scroll");
-    });
-
-    $(document).click(function(event) {
-        // 모달이나 "열기" 버튼 이외의 클릭 시 모달 닫기
-        // 오버레이 클릭 시 닫기 기능 추가 (event.target이 모달이 아니고 오버레이면 닫기)
-        if (!$(event.target).closest(".modal, .js-open-modal").length) {
-            $(".modal").removeClass("visible");
-            $(".modal-overlay").removeClass("visible");
-
-            // 모달 닫힐 때 스크롤 복원
-            $("body").removeClass("body-no-scroll");
-        }
-    });
-    // 오버레이 클릭 시 모달 닫기 추가
-    $(".modal-overlay").click(function() {
-        $(".modal").removeClass("visible");
-        $(this).removeClass("visible");
-        $("body").removeClass("body-no-scroll");
-    });
-});
-
-
-// 현재 스크롤 위치를 저장하기 위한 변수
+    // 현재 스크롤 위치를 저장하기 위한 변수
 let currentScrollPosition = 0;
 let scrollbarWidth = 0; // 스크롤바 너비 저장을 위한 변수
 
@@ -696,7 +656,9 @@ function getScrollbarWidth() {
     const outer = document.createElement('div');
     outer.style.visibility = 'hidden';
     outer.style.overflow = 'scroll';
-    outer.style.msOverflowStyle = 'scrollbar'; // IE
+    outer.style.msOverflowStyle = 'scrollbar'; // IE/Edge
+    outer.style.width = '50px'; // 임시 너비
+    outer.style.height = '50px'; // 임시 높이
     document.body.appendChild(outer);
     const inner = document.createElement('div');
     outer.appendChild(inner);
@@ -719,6 +681,7 @@ function openModal(modalId) {
     $("body").addClass("body-no-scroll");
 
     // 4. body에 position: fixed를 적용하면서 top 위치를 조정하여 화면 점프를 방지합니다.
+    //    이때 -currentScrollPosition 값이 body의 top으로 설정되어, 시각적으로 원래 위치에 고정된 것처럼 보입니다.
     $("body").css({
         top: -currentScrollPosition + 'px'
     });
@@ -763,8 +726,8 @@ $(document).ready(function() {
 
     // 오버레이 및 모달 외부 클릭 시 닫기 이벤트
     $(document).on('click', function(event) {
-        // 클릭된 요소가 모달 콘텐츠 영역, 모달 열기 버튼이 아닌 경우
-        // 그리고 현재 모달이 열려 있는 경우
+        // 클릭된 요소가 모달 콘텐츠 래퍼 (.modal-content-wrapper) 또는 모달 열기 버튼 (.js-open-modal)의
+        // 자손이 아니고, AND 현재 모달이 열려 있는 경우에만 닫기 로직 실행
         if (!$(event.target).closest(".modal-content-wrapper, .js-open-modal").length && $(".modal.visible").length > 0) {
             closeModal();
         }

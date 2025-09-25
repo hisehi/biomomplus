@@ -148,15 +148,22 @@ html.body-no-scroll {
     height: 100% !important;     /* 뷰포트 높이 고정 */
 }
 
+html.body-no-scroll {
+    overflow: hidden !important; /* html 스크롤바 강제 숨김 */
+    height: 100% !important;     /* 뷰포트 높이에 맞춤 */
+}
+
 body.body-no-scroll {
-    overflow: hidden !important; /* 스크롤바 강제 숨김 */
-    height: 100% !important;     /* 뷰포트 높이 고정 */
+    overflow: hidden !important; /* body 스크롤바 강제 숨김 */
+    height: 100% !important;     /* 뷰포트 높이에 맞춤 */
     position: fixed;             /* body를 문서 흐름에서 제외시켜 스크롤 차단 */
     width: 100%;                 /* 너비를 100%로 유지 */
-    left: 0;                     /* 좌측 정렬 */
-    /* 'top' 속성은 JavaScript에서 동적으로 설정됩니다. */
-
+    left: 0;                     /* 좌측 정렬 (가로 스크롤 방지) */
     /*
+     * !!! 중요 !!!
+     * 'top' 속성은 JavaScript에서 현재 스크롤 위치를 기반으로 동적으로 설정됩니다.
+     * 이곳에서는 명시적으로 'top: 0;' 등을 설정하지 마세요!
+     *
      * 스크롤바가 사라질 때 콘텐츠가 밀리는 현상(브라우저별 스크롤바 너비만큼)을 방지합니다.
      * 이 값은 JavaScript에서 계산되어 CSS 변수로 주입됩니다.
      * 예시: padding-right: 17px;
