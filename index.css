@@ -190,7 +190,7 @@ body.body-no-scroll {
     align-items: center; /* 세로 중앙 정렬 */
     
     position: fixed;
-    top: 0; /* 화면 전체를 덮도록 top, left, right, bottom 0 */
+    top: 10%; /* 화면 전체를 덮도록 top, left, right, bottom 0 */
     left: 0;
     right: 0;
     bottom: 0;
@@ -276,7 +276,7 @@ body.body-no-scroll {
     display: flex; /* X 버튼을 중앙 정렬하기 위해 flex 사용 */
     align-items: center; /* 수직 중앙 정렬 */
     justify-content: center; /* 수평 중앙 정렬 */
-    width: 50px; /* X 버튼 영역 크기 고정 */
+    width: 60px; /* X 버튼 영역 크기 고정 */
     height: 100%;
     font-size: 1.2em; /* 폰트 사이즈 좀 더 키움 */
 }
@@ -325,7 +325,7 @@ body.body-no-scroll {
         width: 90%;
     }
     .sns .txt p{
-        font-size: 9px;
+        font-size: 11px;
     }
     .sns a img{
         width: 40px;
@@ -375,7 +375,9 @@ body.body-no-scroll {
     }
 
     .modal__header a {
-        width: 30px;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
     }
 
     .modal img{
