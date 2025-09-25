@@ -141,12 +141,29 @@ body{
 }
 
 
-.body-no-scroll {
-    overflow: hidden !important;
-    height: 100vh; /* 화면 높이 고정으로 스크롤 방지를 안정적으로 만듭니다 */
+/* 스크롤 막기 */
+
+/*
+ * body-no-scroll은 html과 body 모두에 적용되어야 스크롤이 확실히 막힙니다.
+ * 또한, body에 position: fixed를 적용하여 스크롤 위치를 제어할 준비를 합니다.
+ */
+html.body-no-scroll,
+body.body-no-scroll {
+    overflow: hidden !important; /* 스크롤을 강제로 숨깁니다. */
+    height: 100vh !important;    /* 뷰포트 전체 높이를 강제로 할당합니다. */
+}
+
+/*
+ * body에만 position: fixed를 줘서 문서 흐름에서 벗어나게 합니다.
+ * 이때 top 값은 JavaScript에서 현재 스크롤 위치를 기반으로 동적으로 설정합니다.
+ */
+body.body-no-scroll {
     position: fixed;
     width: 100%;
+    /* left: 0; */ /* 가로 스크롤 문제가 발생한다면 추가 */
+    /* top: [JavaScript에서 동적으로 설정됨] */
 }
+
 
 /* 모달 */
 .modal-overlay {
